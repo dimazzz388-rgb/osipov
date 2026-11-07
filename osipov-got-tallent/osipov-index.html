@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Иван Осипов // Личное менторство для амбициозных</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#06090E',
+              card: '#0C111A',
+              border: '#16222F',
+              emerald: '#10B981',
+              lime: '#A3E635',
+              yellow: '#FACC15',
+              darkgreen: '#064E3B'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #06090E;
+      color: #E2E8F0;
+      overflow-x: hidden;
+    }
+    .mesh-bg {
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.10) 0%, transparent 45%),
+        radial-gradient(circle at 85% 50%, rgba(163, 230, 53, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(5, 150, 105, 0.09) 0%, transparent 45%);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Кастомный ползунок калькулятора */
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 22px;
+      width: 22px;
+      border-radius: 9999px;
+      background: #A3E635;
+      cursor: pointer;
+      box-shadow: 0 0 16px rgba(163, 230, 53, 0.85);
+      border: 2px solid #06090E;
+    }
+    input[type=range]::-moz-range-thumb {
+      height: 22px;
+      width: 22px;
+      border-radius: 9999px;
+      background: #A3E635;
+      cursor: pointer;
+      box-shadow: 0 0 16px rgba(163, 230, 53, 0.85);
+      border: 2px solid #06090E;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased mesh-bg selection:bg-lime-400 selection:text-black">
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#06090E]/90 backdrop-blur-md border-b border-emerald-950/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- ЛОГОТИП C ЗЕЛЕНЫМ ДОЛЛАРОМ И ПОДПИСЬЮ MENTORSHIP -->
+      <a href="#" class="group flex flex-col shrink-0 select-none">
+        <div class="font-black tracking-widest text-xl text-white whitespace-nowrap flex items-center">
+          <span>O</span><span class="text-emerald-400 font-black">$</span><span>IPOV</span>
+          <span class="w-2 h-2 rounded-full bg-lime-400 group-hover:scale-150 transition-transform duration-200 ml-1"></span>
+        </div>
+        <span class="text-[9px] font-mono text-zinc-400 tracking-[0.25em] uppercase -mt-0.5">MENTORSHIP</span>
+      </a>
+
+      <!-- ДЕСКТОП НАВИГАЦИЯ (LG+) -->
+      <nav class="hidden lg:flex items-center gap-8 whitespace-nowrap text-sm font-semibold text-zinc-400">
+        <a href="#reality" class="hover:text-lime-400 transition-colors">Анатомия слива</a>
+        <a href="#math" class="hover:text-lime-400 transition-colors">Связка $1k–$3k</a>
+        <a href="#author" class="hover:text-lime-400 transition-colors">Иван Осипов</a>
+        <a href="#drum-program" class="hover:text-lime-400 transition-colors">8 этапов менторства</a>
+        <a href="#cases" class="hover:text-lime-400 transition-colors">Кейсы учеников</a>
+      </nav>
+
+      <!-- ДЕСКТОП ДЕЙСТВИЕ (LG+) -->
+      <div class="hidden lg:flex items-center gap-4">
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/50 border border-emerald-800/40 text-xs font-mono text-emerald-300">
+          <span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
+          <span>Осталось 4 места</span>
+        </div>
+        <a href="#apply" class="shrink-0 whitespace-nowrap bg-gradient-to-r from-emerald-500 via-lime-500 to-yellow-400 text-black font-black text-sm px-6 py-2.5 rounded-xl shadow-lg shadow-lime-500/20 hover:scale-105 active:scale-95 transition-all duration-200">
+          Занять слот
+        </a>
+      </div>
+
+      <!-- МОБИЛЬНЫЙ БЛОК (<LG: СТРОГО 2 ЭЛЕМЕНТА) -->
+      <div class="flex lg:hidden items-center gap-3">
+        <a href="#apply" class="shrink-0 whitespace-nowrap bg-gradient-to-r from-emerald-400 to-lime-400 text-black font-extrabold text-xs px-4 py-2 rounded-xl shadow-md shadow-lime-500/20 active:scale-95 transition">
+          Занять слот
+        </a>
+
+        <button id="mobileMenuBtn" aria-label="Открыть меню" class="p-2 rounded-xl bg-zinc-900 border border-emerald-900/50 text-zinc-300 hover:text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- ВЫПАДАЮЩЕЕ МОБИЛЬНОЕ МЕНЮ -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-[#06090E]/98 border-b border-emerald-950/80 px-6 py-6 space-y-4">
+      <div class="flex items-center gap-2 mb-2 px-3 py-2 rounded-lg bg-emerald-950/40 border border-emerald-800/40 text-xs font-mono text-emerald-300">
+        <span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
+        <span>Осталось всего 4 места на поток</span>
+      </div>
+      <a href="#reality" class="block text-base font-semibold text-zinc-300 hover:text-lime-400 py-1 mobile-link">Анатомия слива</a>
+      <a href="#math" class="block text-base font-semibold text-zinc-300 hover:text-lime-400 py-1 mobile-link">Связка $1k–$3k</a>
+      <a href="#author" class="block text-base font-semibold text-zinc-300 hover:text-lime-400 py-1 mobile-link">Иван Осипов</a>
+      <a href="#drum-program" class="block text-base font-semibold text-zinc-300 hover:text-lime-400 py-1 mobile-link">8 этапов менторства</a>
+      <a href="#cases" class="block text-base font-semibold text-zinc-300 hover:text-lime-400 py-1 mobile-link">Кейсы учеников</a>
+      <div class="pt-3">
+        <a href="#apply" class="block text-center w-full bg-gradient-to-r from-emerald-400 to-lime-400 text-black font-black py-3 rounded-xl shadow-lg shadow-lime-500/25 mobile-link">
+          Заполнить анкету отбора
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-gradient-to-tr from-emerald-600/15 via-emerald-500/15 to-lime-500/10 blur-[140px] rounded-full pointer-events-none -z-10"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Левая колонка -->
+        <div class="lg:col-span-7 space-y-6 text-left">
+          
+          <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-xs sm:text-sm font-mono text-lime-400">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-lime-400"></span>
+            </span>
+            <span>НАБОР НА ЛИЧНОЕ МЕНТОРСТВО // 4 МЕСТА</span>
+          </div>
+
+          <!-- Главный H1 без точки (Вариант 3) -->
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase leading-[1.08]">
+            Самый быстрый путь от нуля до $1,000–$3,000 в онлайне <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-lime-400 to-yellow-300">за 90 дней</span>
+          </h1>
+
+          <!-- Подзаголовок (строго 2 предложения, до 25 слов) -->
+          <p class="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-2xl">
+            Большинство надеется, что жизнь как-нибудь наладится сама по щелчку пальцев. Но если продолжать бездействовать, твой финал — <b class="text-white font-bold">финансовое рабство в кредитном Солярисе</b>
+          </p>
+
+          <!-- ЗАГОТОВКА ПОД ПРОДАЮЩИЙ VSL (16:9 ASPECT-VIDEO) КАК ПРЕВЬЮ НА YOUTUBE -->
+          <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-emerald-900/70 bg-gradient-to-br from-zinc-950 via-[#0C111A] to-black shadow-2xl shadow-emerald-950/50 group cursor-pointer">
+            <img src="https://i.postimg.cc/fbFYHzcq/image.png" alt="Превью VSL" class="absolute inset-0 w-full h-full object-cover opacity-15 filter blur-sm group-hover:scale-105 group-hover:opacity-25 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#06090E] via-black/70 to-transparent"></div>
+            
+            <div class="absolute top-3 left-3 sm:top-4 sm:left-4 flex items-center gap-2 px-2.5 py-1 rounded-md bg-black/70 border border-emerald-900/60 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="text-[10px] sm:text-xs font-mono font-bold text-zinc-300 uppercase tracking-wider">EXCLUSIVE VIDEO</span>
+            </div>
+            
+            <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+              <div class="relative mb-3 sm:mb-4">
+                <span class="absolute -inset-2 rounded-full bg-lime-400/25 blur-md animate-ping"></span>
+                <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-emerald-600 via-emerald-400 to-lime-300 flex items-center justify-center shadow-lg shadow-emerald-400/30 group-hover:scale-110 transition duration-300">
+                  <svg class="w-6 h-6 sm:w-7 sm:h-7 text-black fill-current translate-x-0.5" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="text-sm sm:text-lg lg:text-xl font-black text-white uppercase tracking-tight font-mono">
+                ПРОДАЮЩИЙ VSL (20-40 минут)
+              </div>
+              <p class="text-[11px] sm:text-xs text-zinc-400 mt-1 max-w-md hidden sm:block">
+                Полный разбор системы: от нуля навыков до первых $3,000 онлайн без сказок и мышиной возни
+              </p>
+            </div>
+          </div>
+
+          <!-- CTA кнопки -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1">
+            <a href="#apply" class="flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-lime-300 text-black font-black uppercase text-sm tracking-wider shadow-xl shadow-emerald-500/20 hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition">
+              <span>Пройти квалификационный отбор</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <a href="#cases" class="flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-zinc-900/90 border border-zinc-800 hover:border-emerald-700/60 text-zinc-300 hover:text-white font-semibold text-sm transition">
+              Смотреть кейсы ребят
+            </a>
+          </div>
+
+          <!-- Выгода оффера -->
+          <div class="p-5 rounded-2xl bg-[#0C111A]/90 border border-emerald-900/60 backdrop-blur-sm space-y-2">
+            <div class="flex items-center gap-2.5 text-white font-bold text-sm sm:text-base">
+              <span class="w-7 h-7 rounded-lg bg-lime-400/20 text-lime-400 flex items-center justify-center font-black">⚡</span>
+              <span>Личная 3-месячная работа со мной в группе</span>
+            </div>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+              Суть программы — без иллюзий и топтания на месте вывести тебя на <span class="text-white font-semibold">стабильные $1,000–$3,000 в месяц</span> за 90 дней, даже если прямо сейчас нет навыков и ты скачешь между темами.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Правая колонка: Фото Ивана -->
+        <div class="lg:col-span-5 relative">
+          <div class="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-lime-400 rounded-3xl blur-xl opacity-30 group-hover:opacity-100 transition duration-1000"></div>
+
+          <div class="relative rounded-3xl overflow-hidden bg-zinc-900 border border-emerald-900/60 shadow-2xl">
+            <!-- Заглавное фото: Иван бокс тренировки (без перекрывающих плашек) -->
+            <img src="https://i.postimg.cc/PJbZr1gG/image.png" alt="Иван Осипов на тренировке" class="w-full h-[460px] sm:h-[520px] object-cover object-top hover:scale-105 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#06090E]/60 via-transparent to-transparent pointer-events-none"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== СЕКЦИЯ АНАТОМИИ СЛИВА (ТЕМНО-ОРАНЖЕВЫЙ АКЦЕНТ) ==================== -->
+  <section id="reality" class="py-20 border-t border-emerald-950/60 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mb-14 text-left">
+        <div class="inline-block px-3 py-1 rounded bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-mono uppercase tracking-wider mb-3">
+          АНАТОМИЯ СЛИВА ТВОЕГО ПОТЕНЦИАЛА
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight">
+          Почему ты всё ещё не делаешь <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-400 to-yellow-300">свои 100–300k рублей</span>
+        </h2>
+        <p class="text-zinc-400 text-base mt-4 leading-relaxed">
+          Ты уже посмотрел тонны видео, знаешь теорию и думаешь, что «вот-вот начнешь». Но если хотя бы 3 пункта совпадают — ты в глухой ловушке самообмана.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- 1 -->
+        <div class="bg-[#0C111A]/80 border border-orange-950/60 rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:border-orange-500/80 hover:shadow-[0_0_35px_-5px_rgba(234,88,12,0.35)] hover:-translate-y-1 group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-12 h-12 rounded-xl bg-orange-950/40 border border-orange-500/30 text-orange-400 flex items-center justify-center group-hover:scale-110 transition">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </span>
+            <span class="text-xs font-mono text-zinc-500">ТОЧКА СЛИВА 01</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Синдром вечного студента</h3>
+          <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+            Ты думаешь, что тебе «ещё недостаточно навыков», и покупаешь очередной курс или смотришь тир-листы профессий. Но конечная цель — не навык, а деньги. Без продаж и реальных клиентов любая теория тухнет.
+          </p>
+          <div class="p-3.5 rounded-xl bg-orange-950/40 border border-orange-500/50 text-xs sm:text-sm text-orange-300 font-mono">
+            ⚠️ Симптом: сотни гигабайт курсов на диске, а на карте меньше $500
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="bg-[#0C111A]/80 border border-orange-950/60 rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:border-orange-500/80 hover:shadow-[0_0_35px_-5px_rgba(234,88,12,0.35)] hover:-translate-y-1 group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-12 h-12 rounded-xl bg-orange-950/40 border border-orange-500/30 text-orange-400 flex items-center justify-center group-hover:scale-110 transition">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+            </span>
+            <span class="text-xs font-mono text-zinc-500">ТОЧКА СЛИВА 02</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Хаотичные скачки по нишам</h3>
+          <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+            Сегодня ты монтируешь рилсы, завтра запускаешь крипто-темку, послезавтра мечтаешь про маркетплейсы. Делаешь 50 кривых рассылок, не получаешь ответа и разочаровываешься во всей нише.
+          </p>
+          <div class="p-3.5 rounded-xl bg-orange-950/40 border border-orange-500/50 text-xs sm:text-sm text-orange-300 font-mono">
+            ⚠️ Симптом: бросаешь дело после первых же отказов и мечешься заново
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="bg-[#0C111A]/80 border border-orange-950/60 rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:border-orange-500/80 hover:shadow-[0_0_35px_-5px_rgba(234,88,12,0.35)] hover:-translate-y-1 group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-12 h-12 rounded-xl bg-orange-950/40 border border-orange-500/30 text-orange-400 flex items-center justify-center group-hover:scale-110 transition">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            </span>
+            <span class="text-xs font-mono text-zinc-500">ТОЧКА СЛИВА 03</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Страх продаж и копеечный чек</h3>
+          <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+            У тебя нет твердого оффера и структуры диалога. Ты боишься брать инициативу, сливаешь платежеспособных клиентов, соглашаясь делать гору работы за 5,000 рублей, и выгораешь за 2 недели.
+          </p>
+          <div class="p-3.5 rounded-xl bg-orange-950/40 border border-orange-500/50 text-xs sm:text-sm text-orange-300 font-mono">
+            ⚠️ Симптом: ком в горле на созвоне при попытке назвать чек выше 15 000 руб
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="bg-[#0C111A]/80 border border-orange-950/60 rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:border-orange-500/80 hover:shadow-[0_0_35px_-5px_rgba(234,88,12,0.35)] hover:-translate-y-1 group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-12 h-12 rounded-xl bg-orange-950/40 border border-orange-500/30 text-orange-400 flex items-center justify-center group-hover:scale-110 transition">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            </span>
+            <span class="text-xs font-mono text-zinc-500">ТОЧКА СЛИВА 04</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Токсичное окружение без амбиций</h3>
+          <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+            Если вокруг тебя люди, которые мечтают о пиве по пятницам и стабильной зарплате в 70к до пенсии — у тебя нет шансов. Капля за каплей они внушают тебе, что «выше головы не прыгнешь».
+          </p>
+          <div class="p-3.5 rounded-xl bg-orange-950/40 border border-orange-500/50 text-xs sm:text-sm text-orange-300 font-mono">
+            ⚠️ Симптом: друзья говорят «мечтать не вредно» и тянут тебя на дно
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== СЕКЦИЯ СВЯЗКИ 01-04 (ГРАДИЕНТ ОТ ЗЕЛЕНОГО К ЖЕЛТОМУ) + КАЛЬКУЛЯТОР ==================== -->
+  <section id="math" class="py-20 bg-zinc-950/90 border-t border-emerald-950/60 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-block px-3 py-1 rounded bg-emerald-400/10 border border-emerald-400/30 text-lime-400 text-xs font-mono uppercase tracking-wider mb-3">
+          КОМБИНАЦИЯ ДЕЙСТВИЙ // MORTAL KOMBAT
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight">
+          Как наши ученики делают <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-lime-400 to-yellow-300">1-3k$ за пару месяцев</span>
+        </h2>
+        <p class="text-zinc-400 text-base mt-4">
+          Выход на $1,000–3,000 — это простая последовательность кнопок, которую нужно нажать в строгом порядке, не выдумывая велосипед.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- 4 Шага с градиентом цифр от чисто зеленого (01) к желтому (04) -->
+        <div class="lg:col-span-7 space-y-4">
+          
+          <div class="p-5 rounded-2xl bg-[#0C111A]/90 border border-emerald-950 flex items-start gap-4 transition hover:border-emerald-500/40">
+            <div class="w-12 h-12 rounded-xl bg-emerald-950/70 border border-emerald-600/40 text-emerald-400 font-black font-mono text-xl flex items-center justify-center shrink-0 shadow-lg shadow-emerald-500/15">
+              01
+            </div>
+            <div>
+              <div class="text-white font-bold text-base flex items-center gap-2">
+                <span>Продукт и упаковка</span>
+                <span class="text-xs font-mono text-emerald-400 font-semibold">[ЭТАП_СТАРТ]</span>
+              </div>
+              <p class="text-xs sm:text-sm text-zinc-400 mt-1 leading-relaxed">
+                Формулируем твердый оффер, который закрывает ключевую потребность клиента (например: пачка из 20 готовых рилс/шортс под ключ со сценариями и аналитикой за 30,000 руб.).
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#0C111A]/90 border border-emerald-950 flex items-start gap-4 transition hover:border-emerald-400/40">
+            <div class="w-12 h-12 rounded-xl bg-emerald-950/70 border border-emerald-400/40 text-emerald-300 font-black font-mono text-xl flex items-center justify-center shrink-0 shadow-lg shadow-emerald-400/15">
+              02
+            </div>
+            <div>
+              <div class="text-white font-bold text-base flex items-center gap-2">
+                <span>Аутрич и вывод на созвон</span>
+                <span class="text-xs font-mono text-emerald-300 font-semibold">[ЛИДОГЕН]</span>
+              </div>
+              <p class="text-xs sm:text-sm text-zinc-400 mt-1 leading-relaxed">
+                Запускаем рассылки по готовым скриптам без спама. 500–1000 точечных касаний дают стабильно 15–25 созвонов с реальными предпринимателями и блогерами.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#0C111A]/90 border border-emerald-950 flex items-start gap-4 transition hover:border-lime-400/40">
+            <div class="w-12 h-12 rounded-xl bg-lime-950/60 border border-lime-400/40 text-lime-400 font-black font-mono text-xl flex items-center justify-center shrink-0 shadow-lg shadow-lime-500/15">
+              03
+            </div>
+            <div>
+              <div class="text-white font-bold text-base flex items-center gap-2">
+                <span>Продажи на созвонах</span>
+                <span class="text-xs font-mono text-lime-400 font-semibold">[ЗАКРЫТИЕ]</span>
+              </div>
+              <p class="text-xs sm:text-sm text-zinc-400 mt-1 leading-relaxed">
+                Закрываем сделки по четкой структуре без навязывания и страха. 15–20 созвонов гарантированно конвертируются в 5–6 клиентов с чеком от 30 000 руб.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#0C111A]/90 border border-emerald-950 flex items-start gap-4 transition hover:border-yellow-400/40">
+            <div class="w-12 h-12 rounded-xl bg-yellow-950/60 border border-yellow-400/40 text-yellow-300 font-black font-mono text-xl flex items-center justify-center shrink-0 shadow-lg shadow-yellow-500/15">
+              04
+            </div>
+            <div>
+              <div class="text-white font-bold text-base flex items-center gap-2">
+                <span>Делегирование и свобода</span>
+                <span class="text-xs font-mono text-yellow-300 font-semibold">[СВОБОДА]</span>
+              </div>
+              <p class="text-xs sm:text-sm text-zinc-400 mt-1 leading-relaxed">
+                Передаем рутину на проверенных исполнителей (монтаж, таблицы, рассылки), оставляя себе 1–2 часа контроля в день и чистый профит от 150 000 до 300 000 ₽.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Правая колонка: Интерактивный калькулятор дохода -->
+        <div class="lg:col-span-5">
+          <div class="p-6 sm:p-8 rounded-3xl bg-[#0C111A] border-2 border-emerald-900/80 shadow-2xl space-y-6 relative overflow-hidden">
+            <div class="flex items-center justify-between border-b border-emerald-950 pb-4">
+              <div>
+                <span class="text-xs font-mono text-emerald-400 uppercase tracking-wider font-bold">КАЛЬКУЛЯТОР СВЯЗКИ</span>
+                <h3 class="text-xl font-black text-white">Твой расчет дохода</h3>
+              </div>
+              <div class="w-10 h-10 rounded-xl bg-emerald-950/60 border border-emerald-500/30 flex items-center justify-center text-lime-400 font-black font-mono">
+                ₽/$
+              </div>
+            </div>
+
+            <!-- Слайдер 1: Количество клиентов -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-xs font-mono">
+                <span class="text-zinc-400">КОЛИЧЕСТВО КЛИЕНТОВ:</span>
+                <span id="clientCountVal" class="text-lime-400 font-black text-sm">5 клиентов</span>
+              </div>
+              <input type="range" id="clientSlider" min="1" max="10" value="5" class="w-full h-2 bg-zinc-950 rounded-lg appearance-none cursor-pointer border border-emerald-950">
+              <div class="flex justify-between text-[10px] text-zinc-600 font-mono">
+                <span>1 клиент</span>
+                <span>5 клиентов</span>
+                <span>10 клиентов</span>
+              </div>
+            </div>
+
+            <!-- Слайдер 2: Средний чек -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-xs font-mono">
+                <span class="text-zinc-400">СРЕДНИЙ ЧЕК ЗА УСЛУГУ:</span>
+                <span id="priceVal" class="text-lime-400 font-black text-sm">30 000 ₽ / мес</span>
+              </div>
+              <input type="range" id="priceSlider" min="15000" max="80000" step="5000" value="30000" class="w-full h-2 bg-zinc-950 rounded-lg appearance-none cursor-pointer border border-emerald-950">
+              <div class="flex justify-between text-[10px] text-zinc-600 font-mono">
+                <span>15 000 ₽</span>
+                <span>30 000 ₽</span>
+                <span>80 000 ₽</span>
+              </div>
+            </div>
+
+            <!-- Результаты расчета -->
+            <div class="p-4 rounded-2xl bg-black/60 border border-emerald-950 space-y-3">
+              <div class="flex justify-between items-center text-xs text-zinc-400">
+                <span>Оборот в месяц:</span>
+                <span id="totalRevenue" class="text-white font-mono font-bold">150 000 ₽</span>
+              </div>
+              <div class="flex justify-between items-center text-xs text-zinc-400">
+                <span>Расходы на команду (~25%):</span>
+                <span id="totalCosts" class="text-zinc-500 font-mono">-37 500 ₽</span>
+              </div>
+              <div class="pt-3 border-t border-emerald-950/80 flex justify-between items-baseline">
+                <div>
+                  <div class="text-[10px] font-mono text-zinc-400 uppercase">ТВОЙ ЧИСТЫЙ ДОХОД:</div>
+                  <div id="netProfitRub" class="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-lime-400 to-yellow-300 font-mono">
+                    112 500 ₽
+                  </div>
+                </div>
+                <div id="netProfitUsd" class="text-lg font-black text-emerald-400 font-mono">
+                  ~$1 250
+                </div>
+              </div>
+            </div>
+
+            <a href="#apply" class="block text-center w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-lime-300 text-black font-black uppercase text-xs tracking-wider shadow-lg shadow-emerald-500/20 hover:brightness-110 transition">
+              Построить эту систему в менторстве →
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== ОБ АВТОРЕ: ИВАН ОСИПОВ (ПРИНЦИП ПОБЕДИТЕЛЯ) ==================== -->
+  <section id="author" class="py-20 border-t border-emerald-950/60 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Визитка ментора (перенесена из Hero) -->
+      <div class="p-6 rounded-3xl bg-[#0C111A]/90 border border-emerald-900/60 backdrop-blur-md mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-block px-3 py-1 rounded bg-lime-400/10 border border-lime-400/30 text-lime-400 text-xs font-mono uppercase tracking-wider mb-2">
+            МЕНТОР ПРОГРАММЫ // ПРИНЦИП ПОБЕДИТЕЛЯ
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">Иван Осипов</h2>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-1">Основатель агентства You Agency // Испания, Valencia // 7.5M+ просмотров в медиа</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="px-4 py-2 rounded-xl bg-black/60 border border-emerald-950 text-center">
+            <div class="text-base font-black text-lime-400 font-mono">$30,000+</div>
+            <div class="text-[10px] text-zinc-500 uppercase font-mono">личный доход / мес</div>
+          </div>
+          <div class="px-4 py-2 rounded-xl bg-black/60 border border-emerald-950 text-center">
+            <div class="text-base font-black text-white font-mono">2+ года</div>
+            <div class="text-[10px] text-zinc-500 uppercase font-mono">с личным ментором</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Главный лозунг -->
+      <h3 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight leading-tight mb-8">
+        «Когда в PUBG на остров закидывает 100 человек — <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-lime-400 to-yellow-300">последним живым остаюсь Я</span>»
+      </h3>
+
+      <!-- 4 Фотографии в 1 ряд на десктопе, адаптивно на планшетах и мобилках с object-bottom -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        <div class="rounded-2xl overflow-hidden border border-emerald-950 bg-zinc-900 shadow-xl group">
+          <img src="https://i.postimg.cc/W11rTFSx/image.png" alt="Иван Осипов у спорткара" class="w-full h-56 sm:h-64 object-cover object-bottom group-hover:scale-105 transition duration-500" style="object-position: center bottom;">
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-emerald-950 bg-zinc-900 shadow-xl group">
+          <img src="https://i.postimg.cc/2yNhD0Xq/image.png" alt="Иван Осипов часы" class="w-full h-56 sm:h-64 object-cover object-bottom group-hover:scale-105 transition duration-500" style="object-position: center bottom;">
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-emerald-950 bg-zinc-900 shadow-xl group">
+          <img src="https://i.postimg.cc/PJbZr1gG/image.png" alt="Иван Осипов тренировка бокс" class="w-full h-56 sm:h-64 object-cover object-bottom group-hover:scale-105 transition duration-500" style="object-position: center bottom;">
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-emerald-950 bg-zinc-900 shadow-xl group">
+          <img src="https://i.postimg.cc/fbFYHzcq/image.png" alt="Иван Осипов вилла Испания бассейн" class="w-full h-56 sm:h-64 object-cover object-bottom group-hover:scale-105 transition duration-500" style="object-position: center bottom;">
+        </div>
+      </div>
+
+      <!-- Текст автора: 10 ритмичных абзацев БЕЗ цифр, единый ручеек с акцентами -->
+      <div class="max-w-4xl space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed bg-[#0C111A]/60 border border-emerald-950 p-6 sm:p-10 rounded-3xl">
+        
+        <p>В жизни есть только два типа людей: те, кто бесконечно ищут отмазки, и те, кто <b class="text-white font-bold">вгрызаются в результат зубами</b>.</p>
+
+        <p>Когда в PUBG на карту падает 100 человек — <b class="text-white font-bold">последним живым остаюсь я</b>. С бизнесом и деньгами ровно та же математика.</p>
+
+        <p>Я начинал без связей и стартового капитала: взял первые деньги у дедушки, чтобы зайти в обучение, переборол страх и улетел в Таиланд.</p>
+
+        <p>Там на трейдинге я <b class="text-white font-bold">разогнал депозит с $1,500 до $10,000</b>, но быстро понял: стабильность и масштабируемый капитал строятся только на твердых услугах и системном бизнесе.</p>
+
+        <p>Уже больше двух лет я непрерывно работаю с личным ментором. Это главное правило игры: <b class="text-white font-bold">хочешь расти в разы быстрее — учись у того, кто уже там, куда ты стремишься</b>.</p>
+
+        <p>Когда я запускал You Agency, я делал самую грязную рутину: вручную собирал сотни контактов в таблицы, отправлял тысячи рассылок и <b class="text-white font-bold">ловил тотальный ледяной игнор</b>.</p>
+
+        <p>Накопительный эффект этих действий дал сумасшедший рывок: маршрут Вьетнам, Грузия, Ереван, а сейчас — <b class="text-white font-bold">жизнь в Испании, крупные проекты, женитьба и Ролексы на руке</b>.</p>
+
+        <p>Сегодня мои проекты суммарно генерируют свыше <b class="text-white font-bold">7 500 000+ просмотров</b>, а выстроенная система ежедневно привлекает платежеспособных заказчиков.</p>
+
+        <p>Я не собираюсь никого уговаривать. Моя цель — собрать самое сильное комьюнити голодных и амбициозных парней, которые под моим личным надзором заберут свои первые <b class="text-white font-bold">$1,000–$3,000 в онлайне за 3 месяца</b>.</p>
+
+        <p class="pt-2 border-t border-emerald-950/80">
+          Если ты готов пахать на свой максимум без нытья — <b class="text-white font-bold text-base sm:text-lg">добро пожаловать в мою личную группу</b>.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== ИНТЕРАКТИВНЫЙ SCROLL-SCRUBBER ЭТАПОВ (POSITION: STICKY) ==================== -->
+  <section id="drum-program" class="relative" style="height: 460vh;">
+    
+    <div id="stickyStepsWrapper" class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden z-20 bg-[#06090E]/95 backdrop-blur-xl border-y border-emerald-950/80">
+      
+      <div class="absolute w-[600px] h-[600px] bg-gradient-to-tr from-emerald-600/10 via-lime-500/10 to-yellow-500/5 blur-[130px] rounded-full pointer-events-none -z-10"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-4 sm:py-6">
+        
+        <div class="text-center max-w-3xl mx-auto mb-4 sm:mb-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lime-400/10 border border-lime-400/30 text-lime-400 text-xs font-mono uppercase tracking-wider mb-2">
+            <span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
+            <span>КРУТИ КОЛЕСО // ЭТАПЫ СИСТЕМЫ</span>
+          </div>
+          <!-- Чистый градиент без красного -->
+          <h2 class="text-xl sm:text-3xl lg:text-4xl font-black text-white uppercase tracking-tight">
+            Пошаговая система <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-lime-400 to-yellow-300">8 этапов менторства</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center max-w-5xl mx-auto">
+          
+          <!-- Левая колонка: видна ТОЛЬКО на компьютере (LG+) -->
+          <div class="hidden lg:flex lg:col-span-5 flex-col bg-[#0C111A]/90 border border-emerald-950/90 rounded-3xl p-5 shadow-2xl space-y-4">
+            
+            <div class="flex items-center justify-between border-b border-emerald-950/80 pb-3">
+              <span class="text-xs font-mono text-zinc-400 uppercase">ПРОГРЕСС СИСТЕМЫ</span>
+              <span id="scrollStepCounter" class="text-xs font-mono font-black text-lime-400 bg-lime-400/10 px-3 py-1 rounded-full border border-lime-400/30">
+                01 / 08
+              </span>
+            </div>
+
+            <div class="w-full bg-zinc-950 rounded-full h-2 overflow-hidden border border-emerald-950">
+              <div id="stickyProgressBar" class="h-full bg-gradient-to-r from-emerald-400 via-lime-400 to-yellow-300 transition-all duration-150 w-[12.5%]"></div>
+            </div>
+
+            <div class="space-y-1.5 max-h-[260px] overflow-y-auto no-scrollbar pt-1" id="stepsListContainer">
+              <!-- JS генерирует кнопки этапов -->
+            </div>
+
+          </div>
+
+          <!-- Правая колонка (на мобилках/планшетах занимает всю ширину) -->
+          <div class="lg:col-span-7 w-full">
+            <div id="stickyCardDisplay" class="bg-gradient-to-b from-[#0C111A] to-[#070B10] border-2 border-emerald-900/80 rounded-3xl p-5 sm:p-7 shadow-2xl relative flex flex-col justify-between transition-all duration-300 max-h-[82vh] sm:max-h-[76vh] overflow-y-auto no-scrollbar">
+              
+              <div>
+                <div class="flex items-center justify-between mb-3 sm:mb-5">
+                  <div id="stickyCardIcon" class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-emerald-950 to-lime-950/60 border border-lime-400/40 flex items-center justify-center text-lime-400 shadow-lg shadow-lime-500/10 shrink-0">
+                    <!-- SVG иконка -->
+                  </div>
+
+                  <div class="flex items-center gap-2">
+                    <span id="mobileStepCounter" class="lg:hidden text-xs font-mono font-bold text-lime-400 bg-lime-400/15 border border-lime-400/30 px-2.5 py-1 rounded-full">
+                      01 / 08
+                    </span>
+                    <span id="stickyCardBadge" class="text-[11px] sm:text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest px-3 py-1 bg-emerald-950/60 rounded-full border border-emerald-800/40">
+                      ЭТАП 01 // СТАРТ
+                    </span>
+                  </div>
+                </div>
+
+                <div class="lg:hidden w-full bg-zinc-950 rounded-full h-1.5 overflow-hidden border border-emerald-950 mb-3">
+                  <div id="mobileProgressBar" class="h-full bg-gradient-to-r from-emerald-400 to-lime-400 transition-all duration-150 w-[12.5%]"></div>
+                </div>
+
+                <h3 id="stickyCardTitle" class="text-lg sm:text-2xl font-black text-white uppercase tracking-tight mb-2 sm:mb-3">
+                  Стартовая стратегия и аудит точки А
+                </h3>
+
+                <p id="stickyCardDesc" class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-5">
+                  Разбираем твою точку старта, опыт, ресурсы и ошибки прошлых попыток. Выстраиваем четкий личный план выхода на $1,000–$3,000 без распыления и суеты.
+                </p>
+
+                <div class="p-3 sm:p-3.5 rounded-xl bg-black/70 border border-emerald-950 space-y-1">
+                  <div class="text-[10px] sm:text-xs font-mono text-lime-400 uppercase font-bold">ЧТО ПОЛУЧАЕШЬ НА ВЫХОДЕ:</div>
+                  <div id="stickyCardOutput" class="text-xs sm:text-sm text-zinc-300 flex items-center gap-2">
+                    <span class="text-lime-400 font-bold">✓</span>
+                    <span>Пошаговая карта действий на 90 дней с декомпозицией по неделям</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-4 sm:pt-6 border-t border-emerald-950/80 flex items-center justify-between mt-4">
+                <div class="text-xs text-zinc-400 font-mono">
+                  Формат контроля: <span class="text-white font-bold">Лично со мной</span>
+                </div>
+                <a href="#apply" class="inline-flex items-center justify-center gap-2 px-5 py-2 sm:px-6 sm:py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-lime-400 text-black text-xs font-black uppercase tracking-wider hover:brightness-110 transition shadow-md shadow-lime-500/20">
+                  Занять место →
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ==================== ТВЕРДЫЕ КЕЙСЫ УЧЕНИКОВ ==================== -->
+  <section id="cases" class="py-20 border-t border-emerald-950/60 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mb-14 text-left">
+        <div class="inline-block px-3 py-1 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-wider mb-3">
+          РЕАЛЬНЫЕ РЕЗУЛЬТАТЫ // БЕЗ ВОДЫ
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight">
+          Они начинали точно так же, <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-emerald-400 to-lime-300">как ты сейчас</span>
+        </h2>
+        <p class="text-zinc-400 text-base mt-4">
+          Никаких фейковых скриншотов. Парни, которые отбросили отговорки «начну в следующем году», доверились системе и забрали свои деньги.
+        </p>
+      </div>
+
+      <!-- Главный флагманский кейс: Андрей @andreimedia -->
+      <div class="bg-gradient-to-br from-[#0C111A] via-zinc-900 to-black border border-emerald-900/60 rounded-3xl p-6 sm:p-10 mb-8 relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold">ГЛАВНЫЙ КЕЙС</span>
+              <span class="text-zinc-400 text-xs font-mono">@andreimedia // Ученик Ивана</span>
+            </div>
+            
+            <h3 class="text-2xl sm:text-3xl font-black text-white">
+              Андрей: от нестабильного фриланса до <span class="text-lime-400 font-mono">$19,000 / месяц</span>
+            </h3>
+
+            <div class="space-y-2 text-zinc-300 text-xs sm:text-sm leading-relaxed">
+              <p><b>Точка А:</b> Жил в СПБ, делал нестабильную $1,000 на рилсах. 2 года не было прорыва, постоянный страх: <i>«вдруг не хватит заплатить за квартиру и счета»</i>. Боялся снимать себя на камеру и проявляться в соцсетях.</p>
+              <p><b>Что сделали:</b> В первые 2 дня работы с Иваном заработал 100,000 рублей на перепаковке оффера и скриптах. Выстроили систему продажи дорогих онлайн-услуг.</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+              <div class="p-3 rounded-xl bg-black/60 border border-emerald-950">
+                <div class="text-lime-400 font-black font-mono text-base">$19,000/мес</div>
+                <div class="text-[11px] text-zinc-400">Текущий доход</div>
+              </div>
+              <div class="p-3 rounded-xl bg-black/60 border border-emerald-950">
+                <div class="text-white font-black font-mono text-base">Переехал в топ ЖК</div>
+                <div class="text-[11px] text-zinc-400">Комфортное жильё</div>
+              </div>
+              <div class="p-3 rounded-xl bg-black/60 border border-emerald-950 col-span-2 sm:col-span-1">
+                <div class="text-white font-black font-mono text-base">Помощь семье</div>
+                <div class="text-[11px] text-zinc-400">Закрыл все хотелки</div>
+              </div>
+            </div>
+
+            <blockquote class="text-xs sm:text-sm text-zinc-400 italic border-l-2 border-lime-400 pl-4 py-1">
+              «Иван Александрович подобрал правильные слова, чтобы я отпустил напряжение и неуверенность. Моя самооценка выросла в разы. Искренне не представляю, где бы я был, если бы не начал с ним работать»
+            </blockquote>
+          </div>
+
+          <div class="lg:col-span-5 bg-black/80 border border-emerald-950 rounded-2xl p-6 space-y-4">
+            <div class="text-xs font-mono text-emerald-400 uppercase tracking-widest font-bold">ТРАНСФОРМАЦИЯ СОЗНАНИЯ</div>
+            <div class="text-sm text-zinc-300 leading-relaxed">
+              «Раньше очень много терпел, позволял людям плохо с собой обращаться. Сейчас научился жестко транслировать личные границы и закрывать контракты с уверенностью хищника»
+            </div>
+            <div class="flex items-center gap-3 pt-2 border-t border-zinc-800">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-500 to-lime-400 flex items-center justify-center font-bold text-black font-mono">А</div>
+              <div>
+                <div class="text-sm font-bold text-white">Андрей</div>
+                <div class="text-xs text-zinc-500">Ученик Ивана Осипова</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Сетка кейсов учеников с фото: Иван и Федор + Давид и Павел (единый цвет бейджей) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+
+        <!-- Кейс: Иван @IvanOw1 -->
+        <div class="bg-[#0C111A] border border-emerald-950 rounded-3xl p-6 sm:p-7 flex flex-col sm:flex-row gap-6 items-center">
+          <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-emerald-900/60 shrink-0 bg-zinc-900 shadow-lg">
+            <img src="https://i.postimg.cc/HxbYpwSB/image.png" alt="Кейс Иван" class="w-full h-full object-cover">
+          </div>
+          <div class="space-y-2.5 text-left w-full">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold">КЕЙС: С 1k$ ДО 7.5k$</span>
+              <span class="text-zinc-500 font-mono text-xs">@IvanOw1</span>
+            </div>
+            <div class="text-lg font-black text-white">Иван: от фриланса к чекам $1,000–$4,000</div>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+              Жил в Батуми, кое-как делал $1,000. В 1-й месяц пробил $3,500, на 3-й — $5,000, а рекордный результат — <b class="text-emerald-400 font-mono">$7,500/мес</b> с ясной системой масштабирования.
+            </p>
+          </div>
+        </div>
+
+        <!-- Кейс: Федор @FedorTheBoss -->
+        <div class="bg-[#0C111A] border border-emerald-950 rounded-3xl p-6 sm:p-7 flex flex-col sm:flex-row gap-6 items-center">
+          <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-emerald-900/60 shrink-0 bg-zinc-900 shadow-lg">
+            <img src="https://i.postimg.cc/GpyrQP1C/image.png" alt="Кейс Федор" class="w-full h-full object-cover">
+          </div>
+          <div class="space-y-2.5 text-left w-full">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold">КЕЙС: РУКОВОДИТЕЛЬ 5 ОП</span>
+              <span class="text-zinc-500 font-mono text-xs">@FedorTheBoss</span>
+            </div>
+            <div class="text-lg font-black text-white">Федор: стабильные $5,000/мес и ВНЖ</div>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+              Зарабатывал нестабильную $1,000 на копирайтинге. Через 2 недели работы сделал первую продажу на $1,000. Сейчас — руководитель 5 отделов продаж со средним доходом <b class="text-emerald-400 font-mono">$5,000/мес</b> и оформлением ВНЖ Испании.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Дополнительные кейсы в компактных карточках -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <div class="bg-[#0C111A] border border-emerald-950 rounded-2xl p-6 space-y-3">
+          <div class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">СТУДЕНТ ВУЗА ➔ СВОБОДА</div>
+          <div class="text-lg font-bold text-white">Давид: с нуля до 120 000 ₽</div>
+          <p class="text-xs sm:text-sm text-zinc-400">
+            Учился в универе, не имел опыта и твердых компетенций. За 3 месяца работы по системе вышел на 120k/мес и сразу улетел жить за границу.
+          </p>
+          <div class="text-xs font-mono text-zinc-500 pt-2 border-t border-emerald-950">Срок: 90 дней // С нуля</div>
+        </div>
+
+        <div class="bg-[#0C111A] border border-emerald-950 rounded-2xl p-6 space-y-3">
+          <div class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">В СОБСТВЕННОЙ КОМАНДЕ</div>
+          <div class="text-lg font-bold text-white">Павел: ВНЖ Европы</div>
+          <p class="text-xs sm:text-sm text-zinc-400">
+            Сделегировал рутину на проверенных исполнителей, переехал в теплую страну и сейчас оформляет вид на жительство в Испании.
+          </p>
+          <div class="text-xs font-mono text-zinc-500 pt-2 border-t border-emerald-950">Уровень: Агентство и масштабирование</div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== РАЗВИЛКА «ДВА ПУТИ» ==================== -->
+  <section class="py-20 bg-zinc-950/80 border-t border-emerald-950/60 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-block px-3 py-1 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-wider mb-3">
+          ПОСЛЕДНИЙ ШАГ
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight">
+          Здесь каждый неизбежно выбирает <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-emerald-400 to-lime-300">один из двух сценариев</span>
+        </h2>
+        <p class="text-zinc-400 text-base mt-4">
+          Разница лишь в том, что одни осознают этот выбор и забирают лучшую жизнь, а другие — действуют по старой привычке и удивляются, почему снова оказались у разбитого корыта.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+
+        <!-- Путь 1 -->
+        <div class="p-8 rounded-3xl bg-[#0C111A]/50 border border-zinc-800 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <span class="px-3 py-1 rounded bg-zinc-900 text-zinc-400 font-mono text-xs uppercase font-bold">СЦЕНАРИЙ 97% ЛЮДЕЙ</span>
+            <h3 class="text-2xl font-black text-zinc-300">Остаться в сером болоте</h3>
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              Ты экономишь копейки на собственном росте и надеешься на чудо. В итоге ты просто отдаешь своих будущих клиентов более быстрым и решительным парням, соглашаясь на работу за 80к и кредитный Солярис.
+            </p>
+            <ul class="space-y-2 text-xs sm:text-sm text-zinc-500">
+              <li class="flex items-center gap-2">✕ Вечный страх перед оплатой счетов</li>
+              <li class="flex items-center gap-2">✕ Зависимость от начальника и будильника</li>
+              <li class="flex items-center gap-2">✕ Сожаления о проебанной молодости в 40 лет</li>
+            </ul>
+          </div>
+          <div class="p-4 rounded-xl bg-zinc-950 text-xs text-zinc-500 font-mono text-center">
+            Итог: День сурка на ближайшие 20-30 лет
+          </div>
+        </div>
+
+        <!-- Путь 2 -->
+        <div class="p-8 rounded-3xl bg-gradient-to-b from-emerald-950/40 via-[#0C111A] to-black border-2 border-emerald-400/80 shadow-[0_0_40px_-10px_rgba(16,185,129,0.3)] flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <span class="px-3 py-1 rounded bg-gradient-to-r from-emerald-500 to-lime-400 text-black font-mono text-xs uppercase font-black">ВЫБОР 3% ЛЮДЕЙ</span>
+            <h3 class="text-2xl font-black text-white">Взять осознанный риск</h3>
+            <p class="text-sm text-zinc-300 leading-relaxed">
+              Зайти в сильное комьюнити, получить кристально ясный пошаговый план и за 90 дней под моим личным надзором выйти на стабильные $1,000–$3,000 онлайн.
+            </p>
+            <ul class="space-y-2 text-xs sm:text-sm text-lime-300 font-medium">
+              <li class="flex items-center gap-2">✓ Полная удаленка и свобода перемещения</li>
+              <li class="flex items-center gap-2">✓ Сильное окружение, которое тянет тебя наверх</li>
+              <li class="flex items-center gap-2">✓ Способность закрывать любые чеки и помогать семье</li>
+            </ul>
+          </div>
+          <a href="#apply" class="block text-center w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-lime-300 text-black font-black uppercase text-sm tracking-wider shadow-lg shadow-emerald-400/25 hover:brightness-110 transition">
+            Выбрать свой максимум →
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== ФОРМА / КВАЛИФИКАЦИОННЫЙ ОТБОР ==================== -->
+  <section id="apply" class="py-20 border-t border-emerald-950/60 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-[#0C111A]/90 border border-emerald-900/60 rounded-3xl p-6 sm:p-12 shadow-2xl relative">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-lime-400 text-xs font-mono uppercase mb-3">
+            <span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
+            <span>ЖЕСТКИЙ ОТБОР // ТОЛЬКО 4 МЕСТА</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight">
+            Анкета на личное менторство Ивана Осипова
+          </h2>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-3">
+            Я не беру тех, кто ищет волшебную кнопку. Заполняй анкету только если ты готов пахать на 100% от своего потенциала.
+          </p>
+        </div>
+
+        <form id="mentorForm" class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-mono text-zinc-400 mb-2">ТВОЕ ИМЯ *</label>
+              <input type="text" id="userName" required placeholder="Например, Артем" class="w-full px-4 py-3.5 rounded-xl bg-zinc-950 border border-zinc-800 focus:border-lime-400 focus:outline-none text-white text-sm">
+            </div>
+            <div>
+              <label class="block text-xs font-mono text-zinc-400 mb-2">ВОЗРАСТ (ОТ 17 ДО 25) *</label>
+              <input type="number" id="userAge" required placeholder="Сколько тебе лет" class="w-full px-4 py-3.5 rounded-xl bg-zinc-950 border border-zinc-800 focus:border-lime-400 focus:outline-none text-white text-sm">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-mono text-zinc-400 mb-2">ТЕЛЕГРАМ ДЛЯ СВЯЗИ (@USERNAME) *</label>
+              <input type="text" id="userTg" required placeholder="@your_nickname" class="w-full px-4 py-3.5 rounded-xl bg-zinc-950 border border-zinc-800 focus:border-lime-400 focus:outline-none text-white text-sm">
+            </div>
+            <div>
+              <label class="block text-xs font-mono text-zinc-400 mb-2">ТЕКУЩИЙ ДОХОД В ОНЛАЙНЕ *</label>
+              <select id="userIncome" class="w-full px-4 py-3.5 rounded-xl bg-zinc-950 border border-zinc-800 focus:border-lime-400 focus:outline-none text-white text-sm">
+                <option value="0">0 ₽ (Полный ноль)</option>
+                <option value="15-40">15 000 – 40 000 ₽</option>
+                <option value="40-100">40 000 – 100 000 ₽</option>
+                <option value="100+">От 100 000 ₽ (хочу масштаб)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-mono text-zinc-400 mb-2">В ЧЕМ ТВОЯ ГЛАВНАЯ ПРОБЛЕМА СЕЙЧАС? *</label>
+            <textarea id="userProblem" rows="3" required placeholder="Не понимаю нишу / бросаю после 10 рассылок / боюсь созвонов..." class="w-full px-4 py-3 rounded-xl bg-zinc-950 border border-zinc-800 focus:border-lime-400 focus:outline-none text-white text-sm"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-lime-300 text-black font-black uppercase text-sm tracking-wider shadow-xl shadow-emerald-500/25 hover:brightness-110 active:scale-[0.99] transition">
+            Отправить анкету менеджеру (@flamemaker_work) →
+          </button>
+
+          <p class="text-center text-[11px] text-zinc-500 font-mono">
+            После отправки мы свяжемся с тобой в Telegram в течение 1–2 часов для согласования отборочного созвона.
+          </p>
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== СЕКРЕТНЫЙ КОНТРАСТНЫЙ СТИКЕР (ИНСТРУКЦИЯ #4) ==================== -->
+  <!-- Отступ уменьшен еще на 30px (-mt-14 py-2) -->
+  <div class="relative py-2 px-4 overflow-hidden -mt-14">
+    
+    <!-- Задний план: жестко размытое продолжение страницы -->
+    <div class="filter blur-md opacity-20 pointer-events-none select-none max-w-4xl mx-auto space-y-4">
+      <div class="h-8 bg-zinc-800 rounded-xl w-3/4 mx-auto"></div>
+      <div class="grid grid-cols-3 gap-4">
+        <div class="h-24 bg-zinc-800 rounded-2xl"></div>
+        <div class="h-24 bg-zinc-800 rounded-2xl"></div>
+        <div class="h-24 bg-zinc-800 rounded-2xl"></div>
+      </div>
+      <div class="h-12 bg-zinc-800 rounded-xl w-1/2 mx-auto"></div>
+    </div>
+
+    <!-- Карточка поверх размытия (Контрастный ретро-стикер) -->
+    <div class="relative z-20 max-w-2xl mx-auto my-2 p-8 sm:p-10 rounded-2xl bg-black border-2 border-dashed border-amber-500 shadow-[0_0_50px_rgba(245,158,11,0.25)] text-center">
+      
+      <h3 class="text-3xl sm:text-4xl font-black tracking-tight text-white uppercase font-mono">
+        «Это ещё не всё»
+      </h3>
+
+      <p class="text-zinc-300 text-sm sm:text-base mt-4 max-w-lg mx-auto leading-relaxed">
+        В этой концепции упакован базовый каркас. Но у вашего продукта есть скрытые рычаги и триггеры, которые сделают презентацию в разы сильнее и выжмут максимум из каждого клика.
+      </p>
+
+      <a href="https://t.me/JimmyCreator" target="_blank" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-400 text-black font-black uppercase tracking-wider text-sm hover:brightness-110 shadow-xl shadow-orange-500/30 transition-all hover:scale-105 mt-6">
+        Обсудить полную упаковку программы →
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-12 border-t border-emerald-950/80 bg-black text-center text-xs text-zinc-500 font-mono">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <div class="text-white font-bold tracking-widest text-base flex items-center justify-center gap-1">
+        <span>O</span><span class="text-emerald-400 font-black">$</span><span>IPOV MENTORSHIP</span>
+      </div>
+      <p>Официальная страница набора на личное менторство Ивана Осипова</p>
+      <p class="text-[11px] text-zinc-600">Связь с менеджером: @flamemaker_work // Все права защищены</p>
+    </div>
+  </footer>
+
+  <!-- ==================== МОДАЛЬНОЕ ОКНО УСПЕХА ==================== -->
+  <div id="successModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="bg-[#0C111A] border border-lime-400/60 rounded-3xl max-w-md w-full p-8 text-center shadow-[0_0_50px_rgba(163,230,53,0.3)] space-y-5">
+      <div class="w-16 h-16 rounded-2xl bg-lime-400/20 text-lime-400 text-3xl flex items-center justify-center mx-auto font-bold border border-lime-400/40">
+        ✓
+      </div>
+      <h3 class="text-2xl font-black text-white uppercase">Анкета принята!</h3>
+      <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+        Твои данные зафиксированы в очереди на отбор. Менеджер напишет тебе в Telegram для согласования даты и времени созвона.
+      </p>
+      <div class="p-4 rounded-xl bg-black/60 border border-emerald-950 text-xs font-mono text-zinc-400">
+        Следи за сообщениями от <span class="text-lime-400 font-bold">@flamemaker_work</span>
+      </div>
+      <button id="closeModalBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-400 to-lime-400 text-black font-black uppercase text-xs tracking-wider hover:brightness-110 transition">
+        Понял, жду связи
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== JS СЦЕНАРИИ ==================== -->
+  <script>
+    // 1. Мобильное меню
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+
+    // 2. Интерактивный калькулятор дохода
+    const clientSlider = document.getElementById('clientSlider');
+    const priceSlider = document.getElementById('priceSlider');
+    const clientCountVal = document.getElementById('clientCountVal');
+    const priceVal = document.getElementById('priceVal');
+    const totalRevenue = document.getElementById('totalRevenue');
+    const totalCosts = document.getElementById('totalCosts');
+    const netProfitRub = document.getElementById('netProfitRub');
+    const netProfitUsd = document.getElementById('netProfitUsd');
+
+    function updateCalculator() {
+      if (!clientSlider || !priceSlider) return;
+      const clients = parseInt(clientSlider.value, 10);
+      const price = parseInt(priceSlider.value, 10);
+
+      if (clientCountVal) clientCountVal.textContent = `${clients} ${clients === 1 ? 'клиент' : (clients < 5 ? 'клиента' : 'клиентов')}`;
+      if (priceVal) priceVal.textContent = `${price.toLocaleString('ru-RU')} ₽ / мес`;
+
+      const gross = clients * price;
+      const costs = Math.round(gross * 0.25);
+      const net = gross - costs;
+      const netUsd = Math.round(net / 90);
+
+      if (totalRevenue) totalRevenue.textContent = `${gross.toLocaleString('ru-RU')} ₽`;
+      if (totalCosts) totalCosts.textContent = `-${costs.toLocaleString('ru-RU')} ₽`;
+      if (netProfitRub) netProfitRub.textContent = `${net.toLocaleString('ru-RU')} ₽`;
+      if (netProfitUsd) netProfitUsd.textContent = `~$${netUsd.toLocaleString('en-US')}`;
+    }
+
+    if (clientSlider && priceSlider) {
+      clientSlider.addEventListener('input', updateCalculator);
+      priceSlider.addEventListener('input', updateCalculator);
+      updateCalculator();
+    }
+
+    // 3. Данные для 8 этапов с кастомными SVG иконками
+    const stepsData = [
+      {
+        shortTitle: "01. Стартовая стратегия",
+        badge: "ЭТАП 01 // СТАРТ",
+        title: "Стартовая стратегия и аудит точки А",
+        desc: "Разбираем твою точку старта, опыт, ресурсы и ошибки прошлых попыток. Выстраиваем четкий личный план выхода на $1,000–$3,000 без распыления и суеты.",
+        output: "Пошаговая карта действий на 90 дней с декомпозицией по неделям",
+        svg: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" fill-opacity="0.3" stroke-width="2"/></svg>`
+      },
+      {
+        shortTitle: "02. Выбор ниши",
+        badge: "ЭТАП 02 // ФОКУС",
+        title: "Выбор денежной ниши под сильные стороны",
+        desc: "Определяем направление исходя из твоих склонностей и реального платежеспособного спроса на рынке (рилс-продюсирование, контент-маркетинг, YouTube-сопровождение).",
+        output: "Одна конкретная ниша, где клиенты платят от 30 000 ₽ за проект прямо сейчас",
+        svg: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2v2m0 16v2M2 12h2m16 0h2"/></svg>`
+      },
+      {
+        shortTitle: "03. Продукт и оффер",
+        badge: "ЭТАП 03 // ЦЕННОСТЬ",
+        title: "Сборка твердого продукта и оффера",
+        desc: "Упаковываем понятную услугу, определяем чек от 30 000 руб. и формулируем безотказное предложение, от которого заказчику экономически глупо отказаться.",
+        output: "Ограненный оффер с понятным результатом и обоснованной высокой ценой",
+        svg: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="6 3 18 3 22 9 12 22 2 9" stroke-width="2"/><polyline points="2 9 12 13 22 9" stroke-width="2"/><line x1="12" y1="22" x2="12" y2="13" stroke-width="2"/></svg>`
+      },
+      {
+        shortTitle: "04. Упаковка Telegram",
+        badge: "ЭТАП 04 // ДОВЕРИЕ",
+        title: "Упаковка Telegram и позиционирование",
+        desc: "Приводим в идеальный порядок твой профиль, кейсы, канал и витрину. Создаем образ уверенного эксперта с твердым стержнем, которому доверяют большие чеки.",
+        output: "Продающий Telegram-профиль и упакованное портфолио, закрывающее сомнения",
+        svg: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>`
+      },
+      {
+        shortTitle: "05. Лидогенерация",
+        badge: "ЭТАП 05 // ПОТОК",
+        title: "Системная лидогенерация и воронка",
+        desc: "Внедряем проверенные скрипты поиска клиентов: персональный аутрич, фриланс-площадки и выходы на блогеров. Получаешь непрерывный поток заявок каждый день.",
+        output: "500–1000 точечных рассылок в месяц и 15–25 целевых созвонов в графике",
+        svg: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" stroke-width="2"/></svg>`
+      },
+      {
+        shortTitle: "06. Продажи и созвоны",
+        badge: "ЭТАП 06 // КОНВЕРСИЯ",
+        title: "Продажи в переписке и на созвонах",
+        desc: "Учимся закрывать клиентов на видеовстречах. Скрипты квалификации, отработка возражений «дорого» / «я подумаю» и дожим до перевода предоплаты.",
+        output: "Уверенность на созвонах и минимум 5 закрытых контрактов по 30 000+ руб.",
+        svg: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 10v2a7 7 0 01-14 0v-2M12 19v4m-4 0h8"/></svg>`
+      },
+      {
+        shortTitle: "07. Медийка & YouTube",
+        badge: "ЭТАП 07 // МАСШТАБ",
+        title: "Медийка, YouTube и входящий трафик",
+        desc: "Запускаем собственную медийность и контент. Используем наработки агентства You Agency и Армии Нарезчиков, чтобы клиенты писали сами.",
+        output: "Первые десятки тысяч просмотров и органический входящий поток заказчиков",
+        svg: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 6v12"/></svg>`
+      },
+      {
+        shortTitle: "08. Разборы & Докрутка",
+        badge: "ЭТАП 08 // ДОЖИМ",
+        title: "Личные разборы и докрутка до денег",
+        desc: "Разбираем твои диалоги, скрины переписок, записи созвонов лично со мной. Докручиваем слабые звенья, чтобы ты гарантированно зафиксировал результат.",
+        output: "Выход на стабильные $1,000–$3,000 в месяц и готовая база для масштаба",
+        svg: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>`
+      }
+    ];
+
+    // 4. Построение левого списка этапов
+    const stepsListContainer = document.getElementById('stepsListContainer');
+    stepsData.forEach((step, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `step-nav-btn w-full text-left p-2.5 sm:p-3 rounded-xl text-xs font-mono font-bold transition flex items-center justify-between border ${idx === 0 ? 'bg-lime-400/15 border-lime-400/50 text-white' : 'text-zinc-400 hover:text-white hover:bg-zinc-900 border-transparent'}`;
+      btn.innerHTML = `
+        <span class="truncate mr-2">${step.shortTitle}</span>
+        <span class="step-nav-dot shrink-0 ${idx === 0 ? 'text-lime-400' : 'text-zinc-600'}">${idx === 0 ? '●' : '○'}</span>
+      `;
+      btn.addEventListener('click', () => {
+        scrollToStepIndex(idx);
+      });
+      stepsListContainer.appendChild(btn);
+    });
+
+    const stepNavButtons = document.querySelectorAll('.step-nav-btn');
+    const scrollStepCounter = document.getElementById('scrollStepCounter');
+    const mobileStepCounter = document.getElementById('mobileStepCounter');
+    const stickyProgressBar = document.getElementById('stickyProgressBar');
+    const mobileProgressBar = document.getElementById('mobileProgressBar');
+    const stickyCardDisplay = document.getElementById('stickyCardDisplay');
+    const stickyCardIcon = document.getElementById('stickyCardIcon');
+    const stickyCardBadge = document.getElementById('stickyCardBadge');
+    const stickyCardTitle = document.getElementById('stickyCardTitle');
+    const stickyCardDesc = document.getElementById('stickyCardDesc');
+    const stickyCardOutput = document.getElementById('stickyCardOutput');
+
+    let currentStepActive = 0;
+
+    function renderActiveStepContent(idx) {
+      if (currentStepActive === idx) return;
+      currentStepActive = idx;
+      const step = stepsData[idx];
+
+      stickyCardDisplay.classList.add('opacity-0', 'translate-y-2');
+      
+      setTimeout(() => {
+        stickyCardIcon.innerHTML = step.svg;
+        stickyCardBadge.textContent = step.badge;
+        stickyCardTitle.textContent = step.title;
+        stickyCardDesc.textContent = step.desc;
+        stickyCardOutput.innerHTML = `<span class="text-lime-400 font-bold">✓</span><span>${step.output}</span>`;
+        if (scrollStepCounter) scrollStepCounter.textContent = `0${idx + 1} / 08`;
+        if (mobileStepCounter) mobileStepCounter.textContent = `0${idx + 1} / 08`;
+
+        stepNavButtons.forEach((b, i) => {
+          const dot = b.querySelector('.step-nav-dot');
+          if (i === idx) {
+            b.className = "step-nav-btn w-full text-left p-2.5 sm:p-3 rounded-xl text-xs font-mono font-bold transition flex items-center justify-between border bg-lime-400/15 border-lime-400/50 text-white shadow-md shadow-lime-500/10";
+            if (dot) {
+              dot.className = "step-nav-dot shrink-0 text-lime-400";
+              dot.textContent = "●";
+            }
+          } else {
+            b.className = "step-nav-btn w-full text-left p-2.5 sm:p-3 rounded-xl text-xs font-mono font-bold transition flex items-center justify-between border text-zinc-400 hover:text-white hover:bg-zinc-900 border-transparent";
+            if (dot) {
+              dot.className = "step-nav-dot shrink-0 text-zinc-600";
+              dot.textContent = "○";
+            }
+          }
+        });
+
+        stickyCardDisplay.classList.remove('opacity-0', 'translate-y-2');
+      }, 120);
+    }
+
+    // Инициализация первого этапа
+    stickyCardIcon.innerHTML = stepsData[0].svg;
+
+    // 5. Native Scroll Scrubber расчет (CSS Sticky + Window Scroll)
+    const drumTrackSection = document.getElementById('drum-program');
+
+    function updateStickyScrollProgress() {
+      const rect = drumTrackSection.getBoundingClientRect();
+      const totalScrollableDistance = drumTrackSection.offsetHeight - window.innerHeight;
+      
+      if (totalScrollableDistance <= 0) return;
+
+      const scrolledInside = -rect.top;
+      const progress = Math.min(Math.max(scrolledInside / totalScrollableDistance, 0), 0.9999);
+
+      const barWidth = `${Math.max(progress * 100, 12.5)}%`;
+      if (stickyProgressBar) stickyProgressBar.style.width = barWidth;
+      if (mobileProgressBar) mobileProgressBar.style.width = barWidth;
+
+      const calculatedStep = Math.floor(progress * 8);
+      if (calculatedStep >= 0 && calculatedStep < 8 && calculatedStep !== currentStepActive) {
+        renderActiveStepContent(calculatedStep);
+      }
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateStickyScrollProgress();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    function scrollToStepIndex(idx) {
+      const totalScrollableDistance = drumTrackSection.offsetHeight - window.innerHeight;
+      const targetOffset = drumTrackSection.offsetTop + (idx / 7.9) * totalScrollableDistance;
+      window.scrollTo({
+        top: targetOffset,
+        behavior: 'smooth'
+      });
+    }
+
+    // 6. Форма без alert()
+    const mentorForm = document.getElementById('mentorForm');
+    const successModal = document.getElementById('successModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    mentorForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      successModal.classList.remove('hidden');
+      mentorForm.reset();
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      successModal.classList.add('hidden');
+    });
+
+    successModal.addEventListener('click', (e) => {
+      if (e.target === successModal) {
+        successModal.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
